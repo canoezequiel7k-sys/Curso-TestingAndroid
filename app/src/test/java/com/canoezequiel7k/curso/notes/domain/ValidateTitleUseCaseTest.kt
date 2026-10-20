@@ -4,7 +4,7 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class ValidateTitleUseCaseTest {
-    //Creamos una instancia del caso de uso
+    //Creamos una instancia del caso de uso ValidateTitleUseCase
     private val validateTitle = ValidateTitleUseCase()
     /**
         Nomenglatura utilizada
@@ -43,7 +43,7 @@ class ValidateTitleUseCaseTest {
 
     @Test
     //dado un titulo con simbolos permitidos ('.', ',', '!', '?'), cuando valides, entonces retorna true
-    fun `given a title with allowed symbols`(){
+    fun `given a title with allowed symbols when validating then return true`(){
         //given
         val title = "Hola, como estás!?"
         //when
