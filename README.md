@@ -4,6 +4,9 @@ Proyecto práctico de desarrollo Android en Kotlin concebido exclusivamente con 
 
 No se trata de una aplicación comercial, sino de un entorno de pruebas diseñado para analizar, entender, practicar y comprobar diferentes estrategias de pruebas automatizadas (unitarias, de integración y de interfaz de usuario).
 
+> [!NOTE]
+> Este proyecto está basado en el excelente curso de desarrollo y testing en Android impartido por **Aris Guimerà**. Puedes explorar su contenido y perfil en su GitHub: [ArisGuimera](https://github.com/ArisGuimera).
+
 ## 🎯 Objetivo del Proyecto
 
 Servir como base de estudio y laboratorio de pruebas para aprender a implementar:
