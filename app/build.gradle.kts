@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.aristidevs.masterclass"
+    namespace = "com.canoezequiel7k.curso"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.aristidevs.masterclass"
+        applicationId = "com.canoezequiel7k.curso"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

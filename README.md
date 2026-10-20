@@ -1,93 +1,60 @@
-# Masterclass Testing Android: App de Notas 📝✅
+# Curso Testing Android - Notas & Prácticas de Testing
 
-<p align="center">
-<a href="https://youtube.com/live/89-5NTU90fE"><img src="img/thumbnail.webp" style="height: 75%; width:75%;"/></center></a></p>
+Proyecto práctico de desarrollo Android en Kotlin concebido exclusivamente con fines **educativos y de aprendizaje** para dominar el ecosistema de **Testing en Android**. 
 
-<p align="center">
-<img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin">
+No se trata de una aplicación comercial, sino de un entorno de pruebas diseñado para analizar, entender, practicar y comprobar diferentes estrategias de pruebas automatizadas (unitarias, de integración y de interfaz de usuario).
 
-<img src="https://img.shields.io/badge/Jetpack-4285F4?style=for-the-badge&logo=android&logoColor=white" alt="Jetpack">
+## 🎯 Objetivo del Proyecto
 
-<img src="https://img.shields.io/badge/Compose-1A73E8?style=for-the-badge&logo=jetpackcompose&logoColor=white" alt="Compose">
+Servir como base de estudio y laboratorio de pruebas para aprender a implementar:
+- Pruebas unitarias de lógica de negocio y casos de uso (`UseCases`).
+- Pruebas de ViewModels reactivos con corrutinas y `StateFlow` (utilizando *Turbine*).
+- Pruebas de persistencia y bases de datos con *Room*.
+- Pruebas de componentes de interfaz con *Jetpack Compose*.
+- Mocking y aislamiento de dependencias con *MockK*.
 
-<img src="https://img.shields.io/badge/Unit%20Test-673AB7?style=for-the-badge&logo=kotlin&logoColor=white" alt="Unit Test">
+## 🛠️ Stack Tecnológico
 
-<img src="https://img.shields.io/badge/UI%20Test-0097A7?style=for-the-badge&logo=jetpackcompose&logoColor=white" alt="UI Test">
+- **Lenguaje**: Kotlin
+- **UI**: Jetpack Compose & Material 3
+- **Arquitectura**: MVVM / Clean Architecture simplificada
+- **Persistencia**: Room Database
+- **Librerías de Testing**: JUnit 4, Kotlinx Coroutines Test, Turbine, MockK, Room Testing, Compose UI Test.
 
-<img src="https://img.shields.io/badge/Integration%20Test-303F9F?style=for-the-badge&logo=android&logoColor=white" alt="Integration Test">
-</p>
+## 📂 Estructura del Proyecto
 
-Proyecto base para una **masterclass de testing en Android**: una app de notas pequeña pero realista sobre la que se construyen los **tres tipos de test** —unitarios, de integración y de UI— con Kotlin, Jetpack Compose y Room.
-
-La idea: ver lo **rápido, potente y accesible** que es testear una app real, de lo más simple a lo más jugoso.
-
----
-
-## 🌿 Ramas
-
-El repo está pensado para seguirse en directo. Tienes dos puntos de partida:
-
-| Rama | Qué contiene | Para qué |
-|------|--------------|----------|
-| **`inicio`** | La app **con un bug sembrado** y **sin ningún test** (las dependencias de testing ya están listas). | Punto de partida: aquí escribes los tests en vivo. |
-| **`solucion`** (= `main`) | La app **con el bug arreglado** y **todos los tests** en verde. | El resultado final / referencia. |
-
-> 🐛 **El bug del directo:** en `inicio`, `GetNotesSummaryUseCase` calcula el porcentaje de notas importantes con **división entera** (`important * 100 / total`). Con 2 de 3 notas importantes muestra **66 %** en vez de 67 %. Un test parametrizado lo caza al instante.
-
-```bash
-git checkout inicio     # empezar desde cero
-git checkout solucion   # ver el resultado
+```text
+com.canoezequiel7k.curso/
+│
+├── notes/
+│   ├── data/        # Entidades, DAOs, Base de datos Room y Repositorio
+│   ├── domain/      # Modelos, Casos de uso (UseCases) y contratos de Repositorio
+│   └── ui/          # Pantallas en Jetpack Compose y ViewModel
+│
+└── ui/theme/        # Temas y estilos Material 3
 ```
 
----
+## 📸 Capturas de Pantalla
 
-## 🧪 Los tres tipos de test
+A continuación se muestran algunas vistas de la aplicación funcionando:
 
-| Tipo | Dónde | Qué prueba | Herramientas |
-|------|-------|------------|--------------|
-| **Unitario** | `app/src/test` | `ValidateTitleUseCase` y `GetNotesSummaryUseCase` (**parametrizados**) y `NotesViewModel` | JUnit4, **MockK**, **Turbine**, coroutines-test |
-| **Integración** | `app/src/androidTest` | `NoteDao` sobre una base de datos **Room en memoria** | Room testing, AndroidJUnit4 |
-| **UI** | `app/src/androidTest` | El composable `NotesContent` con estados controlados (render + interacción) | **Compose UI Test** (`createComposeRule`) |
+### Pantalla Principal (Notas)
+![NoteScreen](img/NoteScreen.png)
 
----
+### Redacción de Nota
+![DraftingNote](img/DraftingNote.png)
 
-## ▶️ Cómo ejecutar los tests
+### Mostrando Todas las Tareas / Notas
+![ShowingAllTasks](img/ShowingAllTasks.png)
 
-| Tipo | Comando |
-|------|---------|
-| **Unitarios** (JVM, sin dispositivo) | `./gradlew testDebugUnitTest` |
-| **Integración + UI** (emulador/dispositivo) | `./gradlew connectedDebugAndroidTest` |
+### Mostrando Notas Importantes
+![ShowingImportantTask](img/ShowingImportantTask.png)
 
 ---
 
-## 🏗️ Estructura
+## 🧪 Suite de Testing Incluida
 
-```
-app/src/main/java/com/aristidevs/masterclass/
-├─ MainActivity.kt                 # Wiring manual (sin DI): BD, repositorio y ViewModel
-├─ notes/
-│  ├─ data/                        # Note, NoteDao, NotesDatabase, RoomNotesRepository
-│  ├─ domain/                      # ValidateTitleUseCase, GetNotesSummaryUseCase, NotesRepository
-│  └─ ui/                          # NotesScreen (Compose), NotesViewModel
-└─ ui/theme/                       # Tema Material 3
-```
-
-Arquitectura **Clean Architecture ligera** (data / domain / ui), una sola pantalla, sin inyección de dependencias para que todo el cableado sea visible.
-
----
-
-## 🧰 Stack
-
-Kotlin · Jetpack Compose · Room · Coroutines/Flow · JUnit4 · MockK · Turbine · Compose UI Test
-
-
-----------
-
-## 🚀 AppCademy.dev
-
-<p align="center">
-<a href="https://appcademy.dev"><img src="img/appcademy.webp" style="height: 35%; width:35%;"/></center></a></p>
-
-Este curso está patrocinado por [AppCademy.dev](https://appcademy.dev) mi plataforma de cursos premium donde no solo aprendemos tecnologías sino que profundizamos en sus desarrollos a través de buenas prácticas y contenido avanzado.
-
-----------
+Este repositorio demuestra la aplicación práctica de pruebas en distintas capas:
+1. **Dominio / Unitarias**: Validación de reglas de negocio (`ValidateTitleUseCaseTest`, etc.).
+2. **Presentación / ViewModel**: Verificación de estados reactivos y eventos de usuario (`NotesViewModelTest`).
+3. **Datos / Integración**: Pruebas de DAO y operaciones de base de datos con SQLite in-memory de Room.

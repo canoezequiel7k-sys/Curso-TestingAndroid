@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Masterclass"
+rootProject.name = "Curso-TestingAndroid"
 include(":app")
  

@@ -1,0 +1,43 @@
+package com.canoezequiel7k.curso.notes.domain
+
+import com.canoezequiel7k.curso.notes.data.Note
+import kotlin.math.roundToInt
+
+/**
+ * Resumen de estadísticas de una lista de notas.
+ * Se usa en la pantalla de notas para mostrar total, importantes y porcentaje.
+ */
+data class NotesSummary(
+    val total: Int,
+    val important: Int,
+    val nonImportant: Int,
+    val importantPercentage: Int
+)
+
+/**
+ * Caso de uso: calcula el resumen de una lista de notas.
+ * Lógica pura, usada por el ViewModel para exponer [NotesSummary] en el estado de la UI.
+ */
+class GetNotesSummaryUseCase {
+
+    operator fun invoke(notes: List<Note>): NotesSummary {
+        val total = notes.size
+        val important = notes.count { it.important }
+        val nonImportant = total - important
+
+        val percentage = if (total == 0) {
+            0
+        } else {
+//            (important * 100) / total
+           ((important * 100.0) / total).roundToInt()
+        }
+
+        //Esta caso de uso me retorna el porcentaje de Important Tasks
+        return NotesSummary(
+            total = total,
+            important = important,
+            nonImportant = nonImportant,
+            importantPercentage = percentage
+        )
+    }
+}
