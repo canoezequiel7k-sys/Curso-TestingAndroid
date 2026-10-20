@@ -36,19 +36,15 @@ com.canoezequiel7k.curso/
 
 ## 📸 Capturas de Pantalla
 
-A continuación se muestran algunas vistas de la aplicación funcionando:
+A continuación se muestran algunas vistas de la aplicación organizadas lado a lado:
 
-### Pantalla Principal (Notas)
-![NoteScreen](img/NoteScreen.png)
+| Pantalla Principal (Notas) | Redacción de Nota |
+| :---: | :---: |
+| <img src="img/NoteScreen.png" width="280"/> | <img src="img/DraftingNote.png" width="280"/> |
 
-### Redacción de Nota
-![DraftingNote](img/DraftingNote.png)
-
-### Mostrando Todas las Tareas / Notas
-![ShowingAllTasks](img/ShowingAllTasks.png)
-
-### Mostrando Notas Importantes
-![ShowingImportantTask](img/ShowingImportantTask.png)
+| Mostrando Todas las Tareas | Mostrando Notas Importantes |
+| :---: | :---: |
+| <img src="img/ShowingAllTasks.png" width="280"/> | <img src="img/ShowingImportantTask.png" width="280"/> |
 
 ---
 
